@@ -1,0 +1,152 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 300px ; background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        
+       
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      
+        
+       
+        <div class="profile-card">
+          <img src={{userIn.image}} alt="Photo de profil"  class="avatar">
+          <div class="user-details">
+          <h2>{{userIn.lastname}} {{userIn.firstname}}</h2>
+          
+            <p><strong>First Name:</strong> {{userIn.firstname}}</p>
+            <p><strong>Last Name:</strong> {{userIn.lastname}}</p>
+            <p><strong>Email:</strong> {{userIn.email}}</p>
+            <p><strong>Phone number:</strong> {{userIn.phoneNumber}}</p>
+         
+        </div>
+      </div>
+  
+      
+    </div>
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">My account</h3>
+            </div>
+            <div class="col-4 text-right">
+             
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          
+            <h6 class="heading-small text-muted mb-4">User information</h6>
+            <div class="pl-lg-4">
+              <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-firstname">First name</label>
+                    <input type="text" id="firstname" class="form-control form-control-alternative" formControlName="firstname">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-lastname">Last name</label>
+                    <input id="lastname" type="text" class="form-control" formControlName="lastname" />                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Email</label>
+                    <input id="email" type="email" class="form-control" formControlName="email" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-phonenumber">Phone number</label>
+                    <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber" />
+                  </div>
+                  <div class="button-container">
+                    <button class=" btn btn-primary  button-container" type="submit"> Edit Information</button>               
+
+                  </div>
+                </div>
+              </div>
+              </form>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Pssword information</h6>
+            <div class="pl-lg-4">
+              <form [formGroup]="passwordForm" (ngSubmit)="onChangePassword()">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-oldpassword">Old password</label>
+                      <input
+                        id="input-oldpassword"
+                        class="form-control form-control-alternative"
+                        placeholder="Old password"
+                        type="password"
+                        formControlName="oldPassword"
+                      />
+                      <div *ngIf="passwordForm.controls['oldPassword'].invalid && passwordForm.controls['oldPassword'].touched" class="text-danger">
+                        Old password is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-newpassword">New password</label>
+                      <input
+                        id="input-newpassword"
+                        class="form-control form-control-alternative"
+                        placeholder="New password"
+                        type="password"
+                        formControlName="newPassword"
+                      />
+                      <div *ngIf="passwordForm.controls['newPassword'].invalid && passwordForm.controls['newPassword'].touched" class="text-danger">
+                        New password is required and must be at least 6 characters.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-confpassword">Confirmation password</label>
+                      <input
+                        id="input-confpassword"
+                        class="form-control form-control-alternative"
+                        placeholder="Confirmation password"
+                        type="password"
+                        formControlName="confirmPassword"
+                      />
+                      <div *ngIf="passwordForm.hasError('passwordMismatch') && passwordForm.controls['confirmPassword'].touched" class="text-danger">
+                        Passwords do not match.
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      <button class="btn btn-primary button-container" type="submit" [disabled]="passwordForm.invalid">Edit Password</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              
+          </div>
+           
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
